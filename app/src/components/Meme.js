@@ -11,18 +11,37 @@ const handleMemeButtonClick=()=>{
   props.getMeme()
 } 
     return (
-        <div> <button onClick={handleMemeButtonClick}>get new memes</button>
+        <div
            
-            <p>this is from meme component</p>
-            {console.log('staticmemes',props.staticmemes)}
-            {props.staticmemes.map(staticmeme=>(
-                
-                <div key={staticmeme.id}>
-                <img src={staticmeme.url}></img>
-                <h3>{staticmeme.name}</h3>
+         > <button onClick={handleMemeButtonClick}>Two is not enough, GET 100 MEMES</button>
+           
+            <p></p>
+           <div
+           style={{
+               display:'flex',
+               flexWrap:'wrap',
                
-                </div>
-            ))}
+               
+           }}>
+                    {props.staticmemes.map(staticmeme=>(
+                        
+                            <div style={{
+                                display:'flex', 
+                                justifyContent:"center", 
+                                flexDirection:'column',
+                                alignItems:'center',
+                                flexWrap:'wrap'
+                                
+                                ,width:'25%'
+                                ,margin:' 3% 3%'
+                            }} 
+                                key={staticmeme.id}>
+                            <img style={{width: '250px'}} src={staticmeme.url}></img>
+                            <h3>{staticmeme.name}</h3>               
+                            </div>
+                    
+                    ))}
+            </div>
         </div>
     )
 }
