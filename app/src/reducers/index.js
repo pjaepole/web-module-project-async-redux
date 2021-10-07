@@ -1,6 +1,6 @@
+import { MEME_FETCH_START,MEME_FETCH_SUCCESS,MEME_FETCH_FAIL } from "../actions";
 
-
-const initialState={
+export const initialState={
     staticmemes:[
         {
             "id": "61579",
@@ -20,12 +20,32 @@ const initialState={
         }
     ],
     isFetching:false,
-    error:'',
-    memes:[]
+    error:''
 };
 
 export const reducer =(state=initialState, action)=>{
     switch (action.type){
+        case MEME_FETCH_START:
+            return{
+                ...state,
+                staticmemes:state.staticmemes,
+                error:'',
+                isFetching:true
+            }
+        case MEME_FETCH_SUCCESS:
+            return{
+                ...state,
+                staticmemes: action.payload,
+                isFetching:false,
+                error:''
+            }
+        case MEME_FETCH_FAIL:
+            return{
+                ...state,
+                staticmemes:state.staticmemes,
+                error:action.payload,
+                isFetching:false
+            }
         default:
             return state
     }
